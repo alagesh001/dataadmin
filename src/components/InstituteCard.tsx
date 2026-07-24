@@ -4,9 +4,10 @@ import Badge from "./Badge";
 
 interface InstituteCardProps {
   institute: Institute;
+   onEdit: (institute: Institute) => void;
 }
 
-export default function InstituteCard({ institute }: InstituteCardProps) {
+export default function InstituteCard({ institute, onEdit }: InstituteCardProps) {
   return (
     <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
       
@@ -38,7 +39,9 @@ export default function InstituteCard({ institute }: InstituteCardProps) {
           View
         </button>
 
-        <button className="flex-1 rounded-lg border py-2 text-xs">
+        <button 
+         onClick={() => onEdit(institute)}
+        className="flex-1 rounded-lg border py-2 text-xs">
           <Pencil size={14} className="mr-1 inline" />
           Edit
         </button>

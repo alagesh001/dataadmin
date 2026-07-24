@@ -37,7 +37,12 @@ const [editingInstitute, setEditingInstitute] =
         setError("");
 
         const response = await fetch(
-          `${API_URL}?page=${page}`
+          `${API_URL}?page=${page}`,
+          {
+    headers: {
+      "X-API-TOKEN": "oxad-super-secret-2026",
+    },
+  }
         );
 
         if (!response.ok) {
@@ -285,6 +290,9 @@ const [editingInstitute, setEditingInstitute] =
                 <InstituteCard
                   key={institute.id}
                   institute={institute}
+                   onEdit={(institute) =>
+    setEditingInstitute(institute)
+  }
                 />
               ))}
             </div>

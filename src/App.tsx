@@ -7,7 +7,7 @@ import Settings from "./pages/Settings";
 
 export default function App() {
   return (
-    <BrowserRouter>
+<BrowserRouter basename="/admincontags">
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Dashboard />} />

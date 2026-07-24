@@ -39,6 +39,10 @@ export default function EditInstituteDialog({
         `${API_URL}/${institute.id}/login-status?isLoggedIn=${status}`,
         {
           method: "PUT",
+           headers: {
+      "X-API-TOKEN": "oxad-super-secret-2026",
+    },
+          
         }
       );
 
@@ -53,6 +57,9 @@ export default function EditInstituteDialog({
         `${API_URL}/${institute.id}/renewupdate?renewalDate=${renewalDate}`,
         {
           method: "PUT",
+          headers: {
+      "X-API-TOKEN": "oxad-super-secret-2026",
+    },
         }
       );
 
