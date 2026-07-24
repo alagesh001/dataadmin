@@ -4,9 +4,15 @@ import Badge from "./Badge";
 
 interface InstituteTableProps {
   institutes: Institute[];
+  onEdit: (institute: Institute) => void;
 }
 
-export default function InstituteTable({ institutes }: InstituteTableProps) {
+export default function InstituteTable({
+  institutes,
+  onEdit,
+}: InstituteTableProps){
+
+  
   return (
     <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
       <table className="w-full text-left text-sm">
@@ -55,12 +61,13 @@ export default function InstituteTable({ institutes }: InstituteTableProps) {
                   >
                     <Eye className="h-4 w-4" />
                   </button>
-                  <button
-                    aria-label={`Edit ${institute.name}`}
-                    className="flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-700"
-                  >
-                    <Pencil className="h-4 w-4" />
-                  </button>
+      <button
+  aria-label={`Edit ${institute.name}`}
+  onClick={() => onEdit(institute)}
+  className="flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-700"
+>
+  <Pencil className="h-4 w-4" />
+</button>
                 </div>
               </td>
             </tr>

@@ -12,12 +12,13 @@ import EmptyState from "../components/EmptyState";
 import InstituteCard from "../components/InstituteCard";
 import InstituteTable from "../components/InstituteTable";
 import type { Institute } from "../types/institute";
-
+import EditInstituteDialog from "../components/EditInstituteDialog";
 const API_URL = "https://api.oxadmedia.in/api/registerusers";
 
 export default function Institutes() {
   const navigate = useNavigate();
-
+const [editingInstitute, setEditingInstitute] =
+  useState<Institute | null>(null);
   const [institutes, setInstitutes] = useState<Institute[]>([]);
   const [search, setSearch] = useState("");
 
@@ -138,7 +139,23 @@ export default function Institutes() {
 
   return (
     <div className="space-y-6">
+{editingInstitute && (
+  <EditInstituteDialog
+    institute={editingInstitute}
+    onClose={() => setEditingInstitute(null)}
+    onSaved={(updatedInstitute) => {
+      setInstitutes((prev) =>
+        prev.map((item) =>
+          item.id === updatedInstitute.id
+            ? updatedInstitute
+            : item
+        )
+      );
 
+      setEditingInstitute(null);
+    }}
+  />
+)}
       {/* Header */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
@@ -254,9 +271,12 @@ export default function Institutes() {
           <>
             {/* Desktop table */}
             <div className="hidden lg:block">
-              <InstituteTable
-                institutes={filtered}
-              />
+    <InstituteTable
+  institutes={filtered}
+  onEdit={(institute) =>
+    setEditingInstitute(institute)
+  }
+/>
             </div>
 
             {/* Mobile / Tablet cards */}
