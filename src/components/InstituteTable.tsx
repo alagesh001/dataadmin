@@ -40,7 +40,7 @@ export default function InstituteTable({ institutes }: InstituteTableProps) {
                 <p className="text-xs text-slate-500">{institute.address}</p>
               </td>
               <td className="px-5 py-4 text-slate-600">{institute.city}</td>
-              <td className="px-5 py-4 text-slate-600">{institute.phone}</td>
+              <td className="px-5 py-4 text-slate-600">{institute.mob}</td>
               <td className="px-5 py-4 text-slate-600">{institute.email}</td>
               <td className="px-5 py-4">
                 <Badge tone={institute.active ? "success" : "neutral"}>

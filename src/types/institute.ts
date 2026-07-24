@@ -1,11 +1,15 @@
 export interface Institute {
   id: number;
+  gymId: number;
   name: string;
   address: string;
   city: string;
-  phone: string;
   email: string;
   active: boolean;
+  mob:number;
+  isLoggedIn?: number;
+  planType?: number;
+  renewalDate?: string;
 }
 
 export interface CreateInstituteForm {
